@@ -12,7 +12,7 @@ const Monitor = () => {
             </div>
 
             <div className="table" >
-                <p>table goes here</p>
+                <Result />
             </div>
         </div>
     )

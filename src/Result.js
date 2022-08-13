@@ -1,56 +1,69 @@
 /* eslint-disable */
-
 import 'antd/dist/antd.css';
 import { Table } from 'antd';
+import { useEffect, useState } from 'react';
 
 const Result = () => {
 
-    const data = [
-        {
-            name:"name1",
-            age:10,
-            address:"address1",
-            key:"1"
-        },
+    const[coins, setCoins] = useState([]);
 
-        {
-            name:"name2",
-            age:20,
-            address:"address2",
-            key:"2"
-        },
-        
-        {
-            name:"name3",
-            age:30,
-            address:"address3",
-            key:"3"
-        }
-        
-    ]
+    useEffect( () => {
+        requestCoins();
+    }, [] );
+
+    async function requestCoins() {
+        const res = await fetch(
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
+        );
+        const json = await res.json();
+
+        setCoins(json);
+    }
+    
 
     const columns = [
         {
+            title: "# Rank",
+            dataIndex: "market_cap_rank",
+            key:"key",
+        },
+
+        // {
+        //     title: "Logo",
+        //     dataIndex: "image",
+        //     key:"key",
+        // },
+
+        {
             title: "Name",
             dataIndex: "name",
-            key:"key",
-            render: name => {
-                return(
-                    <a> {name} </a>
-                )
-            }
-        },
-        {
-            title: "Age",
-            dataIndex: "age",
-            key:"key",
-            sorter: (a,b) => a.age - b.age
-        },
-        {
-            title: "Address",
-            dataIndex: "address",
             key:"key"
         },
+        {
+            title: "Symbol",
+            dataIndex: "symbol",
+            key:"key"
+        },
+        {
+            title: "Price",
+            dataIndex: "current_price",
+            key:"key"
+        },
+        {
+            title: "24h",
+            dataIndex: "price_change_percentage_24h",
+            key:"key"
+        },
+        {
+            title: "Volume",
+            dataIndex: "total_volume",
+            key:"key"
+        },
+        {
+            title: "Market Cap",
+            dataIndex: "market_cap",
+            key:"key"
+        }
     ]
 
     return (
@@ -58,7 +71,7 @@ const Result = () => {
             <header className='result-header' >
 
                 <Table
-                dataSource={data}
+                dataSource={coins}
                 columns={columns} >
 
                 </Table>
@@ -68,3 +81,54 @@ const Result = () => {
 }
 
 export default Result;
+
+/*
+const data = [
+    {
+        name:"name1",
+        age:10,
+        address:"address1",
+        key:"1"
+    },
+
+    {
+        name:"name2",
+        age:20,
+        address:"address2",
+        key:"2"
+    },
+    
+    {
+        name:"name3",
+        age:30,
+        address:"address3",
+        key:"3"
+    }
+    
+]
+
+const columns = [
+    {
+        title: "Name",
+        dataIndex: "name",
+        key:"key",
+        render: name => {
+            return(
+                <a> {name} </a>
+            )
+        }
+    },
+    {
+        title: "Age",
+        dataIndex: "age",
+        key:"key",
+        sorter: (a,b) => a.age - b.age
+    },
+    {
+        title: "Address",
+        dataIndex: "address",
+        key:"key"
+    },
+]
+
+*/
