@@ -6,10 +6,12 @@
 
 body {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  padding: 40px;
-  width: 400px;
+  width: 100vw;
   height: 100vh;
-  margin-left: auto;
-  margin-right: auto;
   background-color: #f1ab48;
+}
+
+h1 {
+  text-align: center;
+  background-color: beige;
 }
