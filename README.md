@@ -10,3 +10,4 @@ https://ant.design/components/table/
 
 https://codesandbox.io/s/9235px9x3w?file=/src/index.tsx
 
+ESLint warnings, how to disable for all Result file ?

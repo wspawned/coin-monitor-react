@@ -1,4 +1,4 @@
-
+import Result from "./Result";
 
 const Monitor = () => {
 
@@ -12,7 +12,7 @@ const Monitor = () => {
             </div>
 
             <div className="table" >
-                <p>table</p>
+                <p>table goes here</p>
             </div>
         </div>
     )
