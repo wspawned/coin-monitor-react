@@ -6,7 +6,7 @@
 
 body {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  position: fixed;
+  position: relative;
   width: 100vw;
   height: 100vh;
   background-color: #f1ab48;
@@ -16,3 +16,11 @@ h1 {
   text-align: center;
   background-color: beige;
 }
+
+img {
+  height: 18px;
+}
+
+
+
+

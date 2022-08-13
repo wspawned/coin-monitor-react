@@ -2,6 +2,7 @@
 import 'antd/dist/antd.css';
 import { Table } from 'antd';
 import { useEffect, useState } from 'react';
+import columns from './Columns';
 
 const Result = () => {
 
@@ -19,52 +20,6 @@ const Result = () => {
 
         setCoins(json);
     }
-    
-
-    const columns = [
-        {
-            title: "# Rank",
-            dataIndex: "market_cap_rank",
-            key:"key",
-        },
-
-        // {
-        //     title: "Logo",
-        //     dataIndex: "image",
-        //     key:"key",
-        // },
-
-        {
-            title: "Name",
-            dataIndex: "name",
-            key:"key"
-        },
-        {
-            title: "Symbol",
-            dataIndex: "symbol",
-            key:"key"
-        },
-        {
-            title: "Price",
-            dataIndex: "current_price",
-            key:"key"
-        },
-        {
-            title: "24h",
-            dataIndex: "price_change_percentage_24h",
-            key:"key"
-        },
-        {
-            title: "Volume",
-            dataIndex: "total_volume",
-            key:"key"
-        },
-        {
-            title: "Market Cap",
-            dataIndex: "market_cap",
-            key:"key"
-        }
-    ]
 
     return (
         <div className='result' >
@@ -72,7 +27,7 @@ const Result = () => {
 
                 <Table
                 dataSource={coins}
-                columns={columns} >
+                columns={columns()} >
 
                 </Table>
             </header>
