@@ -25,8 +25,10 @@ const Monitor = () => {
     }
 
     const searchFilter = (value) => {
-        setParam(value);
-        const filtered = coins.filter( (coin) => {return (Object.values(coin).join("").includes(param))} );
+        setParam(value.toLowerCase());
+        const filtered = coins.filter( (coin) => { return (
+            coin.name.toLowerCase().includes(param) || coin.symbol.toLowerCase().includes(param)
+        ) } );
         setSearchedCoin(filtered)
     }
 
@@ -48,7 +50,7 @@ const Monitor = () => {
                 <header className='result-header' >
 
                 <Table
-                    dataSource={ (searchedCoin.length) ? searchedCoin : coins }
+                    dataSource={ (param.length) ? searchedCoin : coins }
                     columns={columns()} >
 
                 </Table>

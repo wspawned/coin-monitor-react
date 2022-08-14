@@ -6,6 +6,11 @@ const columns = () => {
                 title: "# Rank",
                 dataIndex: "market_cap_rank",
                 key:"key",
+                sorter: (a,b) => {
+                    if(a.market_cap_rank > b.market_cap_rank) return 1;
+                    if(a.market_cap_rank < b.market_cap_rank) return -1;
+                    return 0;
+                }  
             },
     
             {
@@ -27,27 +32,47 @@ const columns = () => {
             {
                 title: "Symbol",
                 dataIndex: "symbol",
-                key:"key"
+                key:"key",
             },
             {
                 title: "Price",
                 dataIndex: "current_price",
-                key:"key"
+                key:"key",
+                sorter: (a,b) => {
+                    if(a.current_price > b.current_price) return 1;
+                    if(a.current_price < b.current_price) return -1;
+                    return 0;
+                } 
             },
             {
                 title: "24h",
                 dataIndex: "price_change_percentage_24h",
-                key:"key"
+                key:"key",
+                sorter: (a,b) => {
+                    if(a.price_change_percentage_24h > b.price_change_percentage_24h) return 1;
+                    if(a.price_change_percentage_24h < b.price_change_percentage_24h) return -1;
+                    return 0;
+                } 
             },
             {
                 title: "Volume",
                 dataIndex: "total_volume",
-                key:"key"
+                key:"key",
+                sorter: (a,b) => {
+                    if(a.total_volume > b.total_volume) return 1;
+                    if(a.total_volume < b.total_volume) return -1;
+                    return 0;
+                } 
             },
             {
                 title: "Market Cap",
                 dataIndex: "market_cap",
-                key:"key"
+                key:"key",
+                sorter: (a,b) => {
+                    if(a.market_cap > b.market_cap) return 1;
+                    if(a.market_cap < b.market_cap) return -1;
+                    return 0;
+                }
             },
             {
                 title: "Details",

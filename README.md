@@ -16,3 +16,8 @@ why do we need join?
 ```
 const filtered = coins.filter( (coin) => {return (Object.values(coin).join("").includes(param))} );
 ```
+When ada searched gives radix also WHY ?<br>
+```
+.search(/param/gi)         how is the usage ??
+```
+something is weird in sorting of change percentages also $ signs and colors will be added later<br>
