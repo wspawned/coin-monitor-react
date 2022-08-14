@@ -1,9 +1,35 @@
-import { useState } from "react";
-import Result from "./Result";
+/* eslint-disable */
+import 'antd/dist/antd.css';
+import { Table } from 'antd';
+import { useEffect, useState } from 'react';
+import columns from './Columns';
 
 const Monitor = () => {
 
-    const [param, setParam] = useState("")
+    const [param, setParam] = useState("");
+    const[coins, setCoins] = useState([]);
+    const[searchedCoin,setSearchedCoin] = useState([]);
+
+
+    useEffect( () => {
+        requestCoins();
+    }, [] );
+
+    async function requestCoins() {
+        const res = await fetch(
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
+        );
+        const json = await res.json();
+
+        setCoins(json);
+    }
+
+    const searchFilter = (value) => {
+        setParam(value);
+        const filtered = coins.filter( (coin) => {return (Object.values(coin).join("").includes(param))} );
+        setSearchedCoin(filtered)
+    }
+
 
     return(
         <div className="monitor" >
@@ -13,14 +39,20 @@ const Monitor = () => {
                 <input 
                 placeholder="Search a Coin"
                 value= {param}
-                onChange= { (e) => setParam(e.target.value)}
+                onChange= { (e) => searchFilter(e.target.value) }
                 ></input>
 
             </div>
 
-            <div className="table" >
-                <Result
-                param= {param} />
+            <div className='result' >
+                <header className='result-header' >
+
+                <Table
+                    dataSource={ (searchedCoin.length) ? searchedCoin : coins }
+                    columns={columns()} >
+
+                </Table>
+                </header>
             </div>
         </div>
     )
