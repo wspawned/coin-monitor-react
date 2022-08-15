@@ -21,6 +21,56 @@ img {
   height: 18px;
 }
 
+.info {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 40px;
+}
 
+
+
+.list {
+  width: 30%;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+  border-bottom: 2px solid black;
+}
+
+.list-item > p {
+  display: inline;
+}
+
+.square {
+  width: 20%;
+}
+
+.icon-name {
+  display: flex;
+  justify-content: space-evenly;
+  height: 40%;
+}
+
+.detail-icon {
+  width: 25%;
+  height: 100%;
+}
+
+.price-percent,
+.max-min {
+  height: 30%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.max-min > p {
+  display: inline;
+  width: 50%;
+}
 
 

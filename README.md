@@ -21,3 +21,11 @@ When ada searched gives radix also WHY ?<br>
 .search(/param/gi)         how is the usage ??
 ```
 something is weird in sorting of change percentages also $ signs and colors will be added later<br>
+```
+If componentDidMount() is used with useState hook in function component, it renders twice.
+That will cause performance loss and Class Component and setState is better choice.
+```
+```
+The useParams hook returns an object of key/value pairs of the dynamic params from the current URL that were matched by the Route path. Child routes inherit all params from their parent routes.
+```
+Is something wrong to define empty state inside class component ?? <br>

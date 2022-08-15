@@ -77,9 +77,9 @@ const columns = () => {
             {
                 title: "Details",
                 key:"key",
-                render: () => {
+                render: payload => {
                     return(
-                        <a>Details</a>
+                        <a href= {"details/" + payload.id } >Details</a>
                     )
                 }
             }

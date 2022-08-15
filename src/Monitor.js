@@ -35,7 +35,7 @@ const Monitor = () => {
 
     return(
         <div className="monitor" >
-            <h1>Coin Monitor</h1>
+            
 
             <div className="search" >
                 <input 
