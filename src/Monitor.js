@@ -25,11 +25,12 @@ const Monitor = () => {
     }
 
     const searchFilter = (value) => {
+        setSearchedCoin([]);
         setParam(value.toLowerCase());
         const filtered = coins.filter( (coin) => { return (
             coin.name.toLowerCase().includes(param) || coin.symbol.toLowerCase().includes(param)
         ) } );
-        setSearchedCoin(filtered)
+        setSearchedCoin(filtered);
     }
 
 
