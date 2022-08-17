@@ -74,6 +74,7 @@ img {
 .max-min > p {
   display: inline;
   width: 50%;
+  text-align: center;
 }
 
 
