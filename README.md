@@ -26,3 +26,8 @@ Is something wrong to define empty state inside class component ?? <br>
 ```
 setParam(blabla) and also function(param) cant be used inside same function. set method needs time I guess.
 ```
+In React, HTML style prop value must be object, so it is object inside JSX.
+```
+(value >=0 ) ? <p style={{color:"green"}} > {value + "%" } </p> :
+                        <p style={{color:"red"}} > { value + "%" } </p> ;
+```

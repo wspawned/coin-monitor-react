@@ -33,6 +33,7 @@ const columns = () => {
                 title: "Symbol",
                 dataIndex: "symbol",
                 key:"key",
+                render: symbol => symbol.toUpperCase()
             },
             {
                 title: "Price",
@@ -42,7 +43,8 @@ const columns = () => {
                     if(a.current_price > b.current_price) return 1;
                     if(a.current_price < b.current_price) return -1;
                     return 0;
-                } 
+                },
+                render: current_price => "$ " + Number(current_price).toLocaleString()
             },
             {
                 title: "24h",
@@ -52,7 +54,15 @@ const columns = () => {
                     if(a.price_change_percentage_24h > b.price_change_percentage_24h) return 1;
                     if(a.price_change_percentage_24h < b.price_change_percentage_24h) return -1;
                     return 0;
-                } 
+                },
+                render: price_change_percentage_24h => {
+                    const value = Number(price_change_percentage_24h).toFixed(2);
+                    return (
+                        (value >=0 ) ? <p style={{color:"green"}} > {value + "%" } </p> :
+                        <p style={{color:"red"}} > { value + "%" } </p>
+                    )
+                } ,
+
             },
             {
                 title: "Volume",
@@ -62,7 +72,8 @@ const columns = () => {
                     if(a.total_volume > b.total_volume) return 1;
                     if(a.total_volume < b.total_volume) return -1;
                     return 0;
-                } 
+                },
+                render: total_volume => "$ " + Number(total_volume).toLocaleString() 
             },
             {
                 title: "Market Cap",
@@ -72,7 +83,8 @@ const columns = () => {
                     if(a.market_cap > b.market_cap) return 1;
                     if(a.market_cap < b.market_cap) return -1;
                     return 0;
-                }
+                },
+                render: market_cap => "$ " + Number(market_cap).toLocaleString()
             },
             {
                 title: "Details",

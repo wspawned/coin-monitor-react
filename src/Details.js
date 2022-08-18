@@ -25,6 +25,8 @@ class Details extends Component {
             high_24h, low_24h, market_cap, total_volume, fully_diluted_valuation,
         circulating_supply, total_supply, max_supply} = this.state ;
 
+        const percent = Number(price_change_percentage_24h).toFixed(2);
+
         return(
             <div className="info" >
 
@@ -38,43 +40,43 @@ class Details extends Component {
                     </div>
 
                     <div className="price-percent" >
-                        <p> {current_price} </p>
-                        <p> {price_change_percentage_24h} </p>
+                        <p className="current" > $ {Number(current_price).toLocaleString()} </p>
+                        <p className="change" > {price_change_percentage_24h} </p>
                     </div>
 
                     <div className="max-min" >
-                        <p> 24h Max <br/> {high_24h} </p>
-                        <p> 24h Min <br/> {low_24h} </p>
+                        <p> 24h Max <br/> $ { Number(high_24h).toLocaleString() } </p>
+                        <p> 24h Min <br/> $ { Number(low_24h).toLocaleString() } </p>
                     </div>
                 </div>
 
                 <div className="list" >
                     <div className="list-item" >
                         <p> Market Cap </p>
-                        <p> {market_cap} </p>
+                        <p> $ { Number(market_cap).toLocaleString() } </p>
                     </div>
                     <div className="list-item" >
                         <p> Total Volume </p>
-                        <p> {total_volume} </p>
+                        <p> $ { Number(total_volume).toLocaleString() } </p>
                     </div>
                     <div className="list-item" >
                         <p> Fully Diluted Valuation </p>
-                        <p> {fully_diluted_valuation} </p>
+                        <p> $ { Number(fully_diluted_valuation).toLocaleString() } </p>
                     </div>
                 </div>
 
                 <div className="list" >
                     <div className="list-item" >
                         <p> Circulating Supply </p>
-                        <p> {circulating_supply} </p>
+                        <p> { Number(circulating_supply).toLocaleString() } </p>
                     </div>
                     <div className="list-item" >
                         <p> Total Supply </p>
-                        <p> {total_supply} </p>
+                        <p> { Number(total_supply).toLocaleString() } </p>
                     </div>
                     <div className="list-item" >
                         <p> Max Supply </p>
-                        <p> {max_supply} </p>
+                        <p> { Number(max_supply).toLocaleString() } </p>
                     </div>
                 </div>
 
