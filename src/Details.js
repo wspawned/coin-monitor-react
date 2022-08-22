@@ -25,8 +25,6 @@ class Details extends Component {
             high_24h, low_24h, market_cap, total_volume, fully_diluted_valuation,
         circulating_supply, total_supply, max_supply} = this.state ;
 
-        const percent = Number(price_change_percentage_24h).toFixed(2);
-
         return(
             <div className="info" >
 
@@ -34,14 +32,20 @@ class Details extends Component {
                     <div className="icon-name" >
                         <img className="detail-icon" src={image} alt="icon" ></img>
                         <div>
-                            <p> Rank # {market_cap_rank} </p>
-                            <p> { `${name} (${symbol}) ` } </p>
+                            <p className="rank" > Rank # {market_cap_rank} </p>
+                            <p>  <b> { `${name} (${symbol}) ` }  </b> </p>
                         </div>
                     </div>
 
                     <div className="price-percent" >
                         <p className="current" > $ {Number(current_price).toLocaleString()} </p>
-                        <p className="change" > { price_change_percentage_24h  } </p>
+                        { (function() {
+                            const value = Number(price_change_percentage_24h).toFixed(2);
+                            return (
+                                (value >=0 ) ? <p className="change" style={{color:"green"}} > { value + "%" } </p> :
+                                <p className="change" style={{color:"red"}} > { value + "%" } </p>
+                            )
+                        } ) () }
                     </div>
 
                     <div className="max-min" >

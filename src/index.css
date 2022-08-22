@@ -14,7 +14,7 @@ body {
 
 h1 {
   text-align: center;
-  background-color: beige;
+  background-color: #f1ab48;
 }
 
 img {
@@ -68,7 +68,6 @@ img {
   width: 100%;
   height: 30%;
   display: flex;
-  justify-content: space-between;
 }
 
 .max-min > p {
@@ -77,22 +76,43 @@ img {
   text-align: center;
 }
 
-.price-percent {
-}
-
-.price-percent > p {
-  
-}
-
 .current {
   font-size: 1.5em;
-  width: 45%;
+  width: 64%;
   margin: auto;
   text-align: end;
   font-weight: bolder;
+  padding-left: 55px;
 }
 
 .change {
+  text-align: left;
+  padding-right: 80px;
+  width:36%;
 }
 
+.rank {
+  text-align: center;
+  color: white;
+  background-color: black;
+  border-radius: 15px;
+}
 
+.search-favorites {
+  width: 1vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+input {
+}
+
+.favorites {
+}
+
+.add-fav {
+}
+
+.added {
+
+}

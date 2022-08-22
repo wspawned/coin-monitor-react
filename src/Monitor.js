@@ -37,13 +37,14 @@ const Monitor = () => {
         <div className="monitor" >
             
 
-            <div className="search" >
+            <div className="search-favorites" >
                 <input 
                 placeholder="Search a Coin"
                 value= {param}
                 onChange= { (e) => searchFilter(e.target.value) }
                 ></input>
 
+                <button className='favorites'> favorites </button>
             </div>
 
             <div className='result' >

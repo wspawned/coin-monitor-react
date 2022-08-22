@@ -1,7 +1,18 @@
+import emptyStar from "./empty-star.jpg";
+import fullStar from "./full-star.jpg";
 
 const columns = () => {
     return(
-        [
+        [   
+            {
+                title: "Add to Favorites",
+                key:"key",
+                render: () => {
+                    return(
+                        <button className="add-fav" > <img src= {emptyStar} ></img> </button>
+                    )
+                }
+            },
             {
                 title: "# Rank",
                 dataIndex: "market_cap_rank",
