@@ -85,6 +85,11 @@ img {
 }
 
 .current {
+  font-size: 1.5em;
+  width: 45%;
+  margin: auto;
+  text-align: end;
+  font-weight: bolder;
 }
 
 .change {

@@ -41,12 +41,12 @@ class Details extends Component {
 
                     <div className="price-percent" >
                         <p className="current" > $ {Number(current_price).toLocaleString()} </p>
-                        <p className="change" > {price_change_percentage_24h} </p>
+                        <p className="change" > { price_change_percentage_24h  } </p>
                     </div>
 
                     <div className="max-min" >
-                        <p> 24h Max <br/> $ { Number(high_24h).toLocaleString() } </p>
-                        <p> 24h Min <br/> $ { Number(low_24h).toLocaleString() } </p>
+                        <p> 24h Max <br/>  <b> $ { Number(high_24h).toLocaleString() }  </b> </p>
+                        <p> 24h Min <br/>  <b>  $ { Number(low_24h).toLocaleString() } </b>   </p>
                     </div>
                 </div>
 
