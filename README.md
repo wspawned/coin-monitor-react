@@ -1,3 +1,13 @@
+[Deployed project link](https://main.d3rvdhjdqtm61g.amplifyapp.com/)
+
+![image](https://user-images.githubusercontent.com/80424496/185694512-94bfcdf1-36f1-4e6e-92a0-7ca1ece48255.png)
+
+
+<br>
+
+# Notes 
+
+<br>
 API <br>
 https://www.coingecko.com/en/api <br>
 /coins/markets
