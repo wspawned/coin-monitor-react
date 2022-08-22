@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { useParams } from "react-router-dom";
+import Chart from "./Chart";
 
 class Details extends Component {
 
@@ -8,6 +9,8 @@ class Details extends Component {
 
         this.state= {}  ;
     }
+
+
 
     async componentDidMount() {
         const res = await fetch(
@@ -26,6 +29,7 @@ class Details extends Component {
         circulating_supply, total_supply, max_supply} = this.state ;
 
         return(
+        <div>
             <div className="info" >
 
                 <div className="square" >
@@ -83,8 +87,15 @@ class Details extends Component {
                         <p> { Number(max_supply).toLocaleString() } </p>
                     </div>
                 </div>
-
+                
             </div>
+
+            <div className="chart" >
+                <Chart 
+                 id = {this.props.params.id}
+                />
+            </div>
+        </div>
         )
     }
 }

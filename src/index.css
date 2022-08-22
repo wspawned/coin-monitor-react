@@ -104,6 +104,13 @@ img {
   justify-content: space-between;
 }
 
+.chart {
+  position: relative;
+  margin: auto;
+  padding: auto;
+  text-align: center;
+}
+
 input {
 }
 
@@ -116,3 +123,4 @@ input {
 .added {
 
 }
+
