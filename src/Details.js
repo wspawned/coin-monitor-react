@@ -28,6 +28,9 @@ class Details extends Component {
             high_24h, low_24h, market_cap, total_volume, fully_diluted_valuation,
         circulating_supply, total_supply, max_supply} = this.state ;
 
+        const now = Date.now();
+        const yearBefore = now - 31556926000 ;
+
         return(
         <div>
             <div className="info" >
@@ -91,6 +94,7 @@ class Details extends Component {
             </div>
 
             <div className="chart" >
+                <p> {now}  +  {yearBefore} </p>
                 <Chart 
                  id = {this.props.params.id}
                 />

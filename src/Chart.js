@@ -1,10 +1,32 @@
-
+import { Line } from '@ant-design/plots';
+import { useEffect, useState } from 'react';
 
 
 const Chart = (props) => {
-    const id = props.id
+    const id = props.id;
+    const now = Math.floor(Date.now()/1000 );
+    const yearBefore = now - 31556926 ;
 
-    const myData = [
+    const [prices,setPrices] = useState([]);
+
+    useEffect( () => {
+      requestPrices();
+    }, [] );
+
+    async function requestPrices()  {
+      const res = await fetch(
+        `https://api.coingecko.com/api/v3/coins/${id}/market_chart/range?vs_currency=usd&from=${yearBefore}&to=${now}`
+      );
+      const json = await res.json();
+      let currentPrices = []
+      json.prices.map( (element) => {
+        currentPrices.push( {"date":element[0], "price":element[1] } ) ;
+        setPrices( currentPrices )
+      } )
+    }
+
+
+    const data = [
     { x: 0, y: 0 },
     { x: 1, y: 2 },
     { x: 2, y: 4 },
@@ -24,9 +46,27 @@ const Chart = (props) => {
     { x: 16, y: 40 },
     ];
 
+    const config = {
+        data,
+        width: 800,
+        height: 400,
+        autoFit: false,
+        xField: 'x',
+        yField: 'y',
+        point: {
+          size: 8,
+          shape: 'diamond',
+        },
+        label: {
+          style: {
+            fill: '#aaa',
+          },
+        },
+      };
+
 
     return(
-        <p> { id } Chart goes here</p>
+        <Line {...config} />
     )
 }
 
