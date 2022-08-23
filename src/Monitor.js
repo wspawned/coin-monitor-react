@@ -4,12 +4,19 @@ import { Table } from 'antd';
 import { useEffect, useState } from 'react';
 import columns from './Columns';
 
+const localCache = [];
+
 const Monitor = () => {
 
     const [param, setParam] = useState("");
     const[coins, setCoins] = useState([]);
     const[searchedCoin,setSearchedCoin] = useState([]);
+    const[favCoin,setFavCoin]= useState([]);
 
+    function favClick(info) {
+        const list = favCoin.concat(info)
+        setFavCoin(list);
+    }
 
     useEffect( () => {
         requestCoins();
@@ -52,7 +59,7 @@ const Monitor = () => {
 
                 <Table
                     dataSource={ (param.length) ? searchedCoin : coins }
-                    columns={columns()} >
+                    columns={columns( favClick )} >
 
                 </Table>
                 </header>

@@ -1,15 +1,17 @@
 import emptyStar from "./empty-star.jpg";
 import fullStar from "./full-star.jpg";
 
-const columns = () => {
+const columns = (favClick) => {
     return(
         [   
             {
                 title: "Add to Favorites",
                 key:"key",
-                render: () => {
+                render: (text, record) => {
                     return(
-                        <button className="add-fav" > <img src= {emptyStar} ></img> </button>
+                        <button className="add-fav"
+                        onClick={ () => favClick(record) }
+                        > <img src= {emptyStar} ></img> </button>
                     )
                 }
             },
