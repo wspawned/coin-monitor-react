@@ -1,5 +1,6 @@
 import { Line } from '@ant-design/plots';
 import { useEffect, useState } from 'react';
+import 'antd/dist/antd.css';
 
 
 const Chart = (props) => {
@@ -18,47 +19,26 @@ const Chart = (props) => {
         `https://api.coingecko.com/api/v3/coins/${id}/market_chart/range?vs_currency=usd&from=${yearBefore}&to=${now}`
       );
       const json = await res.json();
-      const allPrices =  json.prices.map( (element) => { return (
+      const allPrices =  json.prices.map( (element) => { 
+        
+        return (
         {"date": element[0], "price":element[1] } ) } ) ;
         setPrices(allPrices);
     } 
     
 
-    const data = [
-    { x: 0, y: 0 },
-    { x: 1, y: 2 },
-    { x: 2, y: 4 },
-    { x: 3, y: 11 },
-    { x: 4, y: 9 },
-    { x: 5, y: 14 },
-    { x: 6, y: 19 },
-    { x: 7, y: 17 },
-    { x: 8, y: 22 },
-    { x: 9, y: 24 },
-    { x: 10, y: 23 },
-    { x: 11, y: 27 },
-    { x: 12, y: 32 },
-    { x: 13, y: 30 },
-    { x: 14, y: 35 },
-    { x: 15, y: 37 },
-    { x: 16, y: 40 },
-    ];
+    const data = prices;
 
     const config = {
         data,
-        width: 800,
-        height: 400,
-        autoFit: false,
-        xField: 'x',
-        yField: 'y',
-        point: {
-          size: 8,
-          shape: 'diamond',
+        padding: 'auto',
+        xField: 'date',
+        yField: 'price',
+        xAxis: {
+          type:"time",
+          tickCount: 10,
         },
-        label: {
-          style: {
-            fill: '#aaa',
-          },
+        yAxis: {
         },
       };
 
