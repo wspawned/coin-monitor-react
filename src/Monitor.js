@@ -4,7 +4,7 @@ import { Table } from 'antd';
 import { useEffect, useState } from 'react';
 import columns from './Columns';
 
-const localCache = [];
+let localCache = [];
 
 const Monitor = () => {
 
@@ -12,15 +12,37 @@ const Monitor = () => {
     const[coins, setCoins] = useState([]);
     const[searchedCoin,setSearchedCoin] = useState([]);
     const[favCoin,setFavCoin]= useState([]);
+    const [favOpen,setFavOpen] = useState(false);
 
     function favClick(info) {
-        const list = favCoin.concat(info)
-        setFavCoin(list);
+        if(localCache.includes(info)) {
+            const list = localCache.filter( (elm) => elm.id !== info.id );
+            localCache = list;
+            setFavCoin(localCache);
+        } else {
+            const list = localCache.concat(info);
+            localCache = list;
+            setFavCoin(localCache);
+        }
     }
 
+    function toggleFav() { 
+        if(localCache.length) {setFavOpen(!favOpen)} 
+    };
+
     useEffect( () => {
-        requestCoins();
-    }, [] );
+        if(favOpen === true) {
+            setCoins(localCache);
+        } else {
+            requestCoins();
+
+        }
+    }, [favOpen] )
+    
+
+    // useEffect( () => {
+    //     requestCoins();
+    // }, [] );
 
     async function requestCoins() {
         const res = await fetch(
@@ -51,7 +73,9 @@ const Monitor = () => {
                 onChange= { (e) => searchFilter(e.target.value) }
                 ></input>
 
-                <button className='favorites'> favorites </button>
+                <button className='favorites'
+                onClick={ () => toggleFav() }
+                > favorites </button>
             </div>
 
             <div className='result' >
