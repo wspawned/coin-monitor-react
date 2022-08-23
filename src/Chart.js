@@ -18,13 +18,11 @@ const Chart = (props) => {
         `https://api.coingecko.com/api/v3/coins/${id}/market_chart/range?vs_currency=usd&from=${yearBefore}&to=${now}`
       );
       const json = await res.json();
-      let currentPrices = []
-      json.prices.map( (element) => {
-        currentPrices.push( {"date":element[0], "price":element[1] } ) ;
-        setPrices( currentPrices )
-      } )
-    }
-
+      const allPrices =  json.prices.map( (element) => { return (
+        {"date": element[0], "price":element[1] } ) } ) ;
+        setPrices(allPrices);
+    } 
+    
 
     const data = [
     { x: 0, y: 0 },
