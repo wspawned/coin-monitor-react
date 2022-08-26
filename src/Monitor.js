@@ -33,7 +33,7 @@ const Monitor = () => {
     }
 
     function toggleFav() { 
-        if(localCache.size) {setFavOpen(!favOpen)};
+        if(localCache.size || favOpen ) {setFavOpen(!favOpen)};
     };
 
     useEffect( () => {
