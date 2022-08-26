@@ -17,26 +17,28 @@ const Monitor = () => {
     function favClick(id) {
         if(localCache.has(id)) {
             localCache.delete(id);
-            console.log(localCache);
+            let index = 500 ;
+            for (const coin of coins) { if(coin.id === id) { index = coins.indexOf(coin) } };
+            const current = coins.slice();
+            current[index].isFav = false;
+            setCoins(current);
         } else {
             localCache.add( id ) ;
-            let index = 200;
+            let index = 500 ;
             for (const coin of coins) { if(coin.id === id) { index = coins.indexOf(coin) } };
-            setCoins( prevState => {
-                prevState[index].isFav = true;
-                console.log(prevState);
-                return ( prevState );
-            } )
+            const current = coins.slice();
+            current[index].isFav = true;
+            setCoins(current);
         }
     }
 
     function toggleFav() { 
-        if(localCache.length) {setFavOpen(!favOpen)} 
+        if(localCache.size) {setFavOpen(!favOpen)};
     };
 
     useEffect( () => {
         if(favOpen === true) {
-            setCoins(localCache);
+            setCoins(coins.filter( coin => (coin.isFav===true) ));
         } else {
             requestCoins();
 

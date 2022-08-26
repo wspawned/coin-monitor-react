@@ -11,7 +11,7 @@ const columns = (favClick) => {
                     return(
                         <button className="add-fav"
                         onClick={ () => favClick(record.id) }
-                        > <img src= {emptyStar} ></img> </button>
+                        > <img src= { (record.isFav)? fullStar : emptyStar} ></img> </button>
                     )
                 }
             },
