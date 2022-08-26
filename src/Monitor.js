@@ -4,7 +4,7 @@ import { Table } from 'antd';
 import { useEffect, useState } from 'react';
 import columns from './Columns';
 
-let localCache = [];
+const localCache = new Set() ;
 
 const Monitor = () => {
 
@@ -14,15 +14,19 @@ const Monitor = () => {
     const[favCoin,setFavCoin]= useState([]);
     const [favOpen,setFavOpen] = useState(false);
 
-    function favClick(info) {
-        if(localCache.includes(info)) {
-            const list = localCache.filter( (elm) => elm.id !== info.id );
-            localCache = list;
-            setFavCoin(localCache);
+    function favClick(id) {
+        if(localCache.has(id)) {
+            localCache.delete(id);
+            console.log(localCache);
         } else {
-            const list = localCache.concat(info);
-            localCache = list;
-            setFavCoin(localCache);
+            localCache.add( id ) ;
+            let index = 200;
+            for (const coin of coins) { if(coin.id === id) { index = coins.indexOf(coin) } };
+            setCoins( prevState => {
+                prevState[index].isFav = true;
+                console.log(prevState);
+                return ( prevState );
+            } )
         }
     }
 
@@ -50,7 +54,7 @@ const Monitor = () => {
         );
         const json = await res.json();
 
-        setCoins(json);
+        setCoins( json.map( (item) => { return ( {...item, isFav:false } ) } )   );
     }
 
     const searchFilter = (value) => {

@@ -41,3 +41,6 @@ In React, HTML style prop value must be object, so it is object inside JSX.
 (value >=0 ) ? <p style={{color:"green"}} > {value + "%" } </p> :
                         <p style={{color:"red"}} > { value + "%" } </p> ;
 ```
+Set is mutable,so it cant be used wit useState hook. If it is used react wont render twice.<br>
+
+

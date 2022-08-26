@@ -10,7 +10,7 @@ const columns = (favClick) => {
                 render: (text, record) => {
                     return(
                         <button className="add-fav"
-                        onClick={ () => favClick(record) }
+                        onClick={ () => favClick(record.id) }
                         > <img src= {emptyStar} ></img> </button>
                     )
                 }
