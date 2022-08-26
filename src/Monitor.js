@@ -55,8 +55,18 @@ const Monitor = () => {
         "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
         );
         const json = await res.json();
-
-        setCoins( json.map( (item) => { return ( {...item, isFav:false } ) } )   );
+        const list = json.map( (item) => {
+            return ( {...item, isFav:false } ) 
+        })
+        localCache.forEach( (item) => {
+            for(const coin of list) {
+                if(coin.id === item) {
+                    coin.isFav=true
+                }
+            }
+        } )
+        console.log(list);
+        setCoins( list  );
     }
 
     const searchFilter = (value) => {
