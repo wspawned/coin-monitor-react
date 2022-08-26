@@ -11,7 +11,6 @@ const Monitor = () => {
     const [param, setParam] = useState("");
     const[coins, setCoins] = useState([]);
     const[searchedCoin,setSearchedCoin] = useState([]);
-    const[favCoin,setFavCoin]= useState([]);
     const [favOpen,setFavOpen] = useState(false);
 
     function favClick(id) {
@@ -33,7 +32,11 @@ const Monitor = () => {
     }
 
     function toggleFav() { 
-        if(localCache.size || favOpen ) {setFavOpen(!favOpen)};
+        if(localCache.size || favOpen ) {
+            setFavOpen(!favOpen);
+            setParam("");
+            setSearchedCoin([]);
+        };
     };
 
     useEffect( () => {
@@ -84,14 +87,14 @@ const Monitor = () => {
 
             <div className="search-favorites" >
                 <input 
-                placeholder="Search a Coin"
+                placeholder= { (favOpen) ? "Search in Favorites" : "Search a Coin" }  
                 value= {param}
                 onChange= { (e) => searchFilter(e.target.value) }
                 ></input>
 
                 <button className='favorites'
                 onClick={ () => toggleFav() }
-                > favorites </button>
+                > { (favOpen) ? "back to home" : "go to favorites" } </button>
             </div>
 
             <div className='result' >

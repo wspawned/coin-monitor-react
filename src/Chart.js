@@ -31,6 +31,7 @@ const Chart = (props) => {
 
     const config = {
         data,
+        autoFit: true,
         padding: 'auto',
         xField: 'date',
         yField: 'price',
