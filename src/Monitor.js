@@ -4,8 +4,9 @@ import { Table } from 'antd';
 import { useEffect, useState } from 'react';
 import columns from './Columns';
 
-const localCache = new Set() ;
+const localCache = new Set();
 
+const COIN_URL = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false";
 const Monitor = () => {
 
     const [param, setParam] = useState("");
@@ -20,6 +21,9 @@ const Monitor = () => {
             for (const coin of coins) { if(coin.id === id) { index = coins.indexOf(coin) } };
             const current = coins.slice();
             current[index].isFav = false;
+            //let targetCoin = coins.find(coin => coin.id === id);
+            //targetCoin.isFav = false;
+            //setCoins([...coins]);
             setCoins(current);
         } else {
             localCache.add( id ) ;
@@ -54,13 +58,15 @@ const Monitor = () => {
     // }, [] );
 
     async function requestCoins() {
-        const res = await fetch(
-        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
-        );
+        const res = await fetch(COIN_URL);
         const json = await res.json();
         const list = json.map( (item) => {
             return ( {...item, isFav:false } ) 
-        })
+        });
+        //const list2 = json;
+        //list2.forEach((coin) => { 
+        //  coin.isFav = localCache.has(coin.id);
+        //});
         localCache.forEach( (item) => {
             for(const coin of list) {
                 if(coin.id === item) {
