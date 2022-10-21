@@ -1,3 +1,9 @@
+# Coin Monitor - Crypto Coin Tracking Dashboard
+
+- App allows filtering and sorting by name, rank, price etc. and allows user to create favorite coin list 
+- Utilized: Rest API, Ant Design
+
+
 [Deployed project link](https://main.d3rvdhjdqtm61g.amplifyapp.com/)
 
 ![image](https://user-images.githubusercontent.com/80424496/185694512-94bfcdf1-36f1-4e6e-92a0-7ca1ece48255.png)
@@ -9,8 +15,8 @@
 
 <br>
 API <br>
-https://www.coingecko.com/en/api <br>
-/coins/markets
+https://www.coingecko.com/en/api/coins/markets <br>
+
 
 ```
 https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false
